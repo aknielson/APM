@@ -36,7 +36,7 @@
     "Price": 8.99,
     "ProductCode": "TBX-0048",
     "ProductId": 5,
-    "ProductName": "Hammer",
+    "ProductName": "Hammer-Steel",
     "ReleaseDate": "2013-05-21T00:00:00-07:00"
   },
   {
@@ -86,5 +86,13 @@
     "ProductId": 11,
     "ProductName": "iWatch",
     "ReleaseDate": "2015-03-10T16:55:08.535279-07:00"
+  },
+  {
+    "Description": "11-inch Apple Laptop",
+    "Price": 0.0,
+    "ProductCode": "APL-0002",
+    "ProductId": 12,
+    "ProductName": "MacBook Air",
+    "ReleaseDate": "2016-06-10T14:41:36.7226562-07:00"
   }
 ]

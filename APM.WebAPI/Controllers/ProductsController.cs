@@ -21,27 +21,45 @@ namespace APM.WebAPI.Controllers
             return productRepository.Retrieve().AsQueryable();
         }
         
-        public IEnumerable<Product> Get(string search)
-        {
-            var productRepository = new ProductRepository();
-            var retVal = productRepository.Retrieve().Where(pr => pr.ProductCode.Contains(search));
-            return retVal;
-        }
+        //public IEnumerable<Product> Get(string search)
+        //{
+        //    var productRepository = new ProductRepository();
+        //    var retVal = productRepository.Retrieve().Where(pr => pr.ProductCode.Contains(search));
+        //    return retVal;
+        //}
 
         // GET: api/Products/5
-        public string Get(int id)
+        public Product Get(int id)
         {
-            return "value";
+            Product product;
+            var productRepository = new ProductRepository();
+
+            if (id > 0)
+            {
+                //bad get all.. doing it because there isn't really a db
+                var products = productRepository.Retrieve();
+                product = products.FirstOrDefault(p => p.ProductId == id);
+            }
+            else
+            {
+                product = productRepository.Create();
+            }
+            return product;
         }
 
         // POST: api/Products
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Product product)
         {
+
+            var productRepository = new ProductRepository();
+            productRepository.Save(product);
         }
 
         // PUT: api/Products/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Product product)
         {
+            var productRepository = new ProductRepository();
+            productRepository.Save(1, product);
         }
 
         // DELETE: api/Products/5
