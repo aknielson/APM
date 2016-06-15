@@ -8,17 +8,28 @@
     <link href="Content/bootstrap.css" rel="stylesheet" />
 </head>
 
-<body ng-app="productManagement">
+<body ng-app="productManagement" ng-controller="MainCtrl as vm">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <div class="navbar-brand">Acme Product Management</div>
+                <form ng-hide="vm.isLoggedIn" class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="vm.userData.email" placeholder="username (email)" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" ng-model="vm.userData.password" />
+                    </div>
+                    <button type="submit" ng-click="vm.login()" class="btn btn-default">Login</button>
+                    <button type="submit" ng-click="vm.registerUser()" class="btn btn-default">Register</button>
+                    <div ng-show="vm.message">{{vm.message}}</div>
+                </form>
             </div>
         </div>
     </nav>
-
+    
     <div class="container">
-        <div ng-include="'app/products/productEditView.html'"></div>
+        <div ng-if="vm.isLoggedIn" ng-include="'app/products/productEditView.html'"></div>
     </div>
 
     <!-- Library Scripts -->
@@ -33,6 +44,8 @@
     <!-- Product Controllers -->
     <script src="app/products/productListCtrl.js"></script>
     <script src="app/products/productEditCtrl.js"></script>
+    <script src="app/mainCtrl.js"></script>
+    <script src="common/userAccount.js"></script>
 </body>
 
 </html>
